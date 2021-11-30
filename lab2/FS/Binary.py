@@ -1,8 +1,7 @@
-import Node
-
-class Binary(Node):
+class Binary():
     def __init__(self, name, contents):
-        pass
+        self.name = name
+        self.contents = contents
 
     def read(self):
-        pass
+        return self.contents

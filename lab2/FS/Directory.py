@@ -1,24 +1,38 @@
-import Node
+class Directory():
+    DIR_MAX_ELEMS = 8
 
-class Directory(Node):
-    def __init__(self, name, files):
-        pass
+    def __init__(self, name, files=[]):
+        self.name = name
+        self.files = files.copy()
 
-    def create(self, node):
-       pass
+    def append(self, file):
+        if len(self.files) >= self.DIR_MAX_ELEMS:
+            print('ERROR: Directory is full.')
+            return False
 
-    def delete(self, node):
-        pass
+        self.files.append(file)
+        return True
 
-    def move(self, node, path):
-        pass
+    def delete(self, file):
+        if file in self.files:
+            self.files.remove(file)
+        else:
+            print('ERROR: No such file is found in current directory.')
 
-    def get_file_by_name(self, name, ext):
-        pass
+    def move(self, file, path):
+        if(type(path).__name__ != 'Directory'):
+            print('ERROR: Destination is wrong. It\'s not a Directory.')
+        elif(path.append(file)):
+            self.delete(file)
+        else:
+            print('ERROR: Some error occured. Move wasn\'t executed.')
 
     def list_files(self):
-        pass
+        for file in self.files:
+            print(file.name, file.ext)
 
     def list_subdirectories(self, level=0):
-        pass
-
+        for file in self.files:
+            print(level * '- ' + f'{file.name}{file.ext}')
+            if (type(file).__name__ == 'Directory'):
+                file.list_subdirectories(level + 1)

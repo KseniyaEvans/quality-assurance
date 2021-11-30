@@ -1,11 +1,22 @@
-import Node
+class Buffer():
+    MAX_BUF_FILE_SIZE = 8
 
-class Buffer(Node):
     def __init__(self, name, files):
-        pass
+        self.name = name
+        self.queue = files.copy()
 
     def push(self, elem):
-        pass
+        if len(self.queue) >= self.MAX_BUF_FILE_SIZE:
+            print("ERROR: Limit size is reached.")
+            return False
+        else:
+            self.queue.append(elem)
+        return True
 
     def consume(self):
-        pass
+        if len(self.queue) > 0:
+            self.queue.pop()
+            return True
+        else:
+            print("Warning: Buffer is empty")
+            return False

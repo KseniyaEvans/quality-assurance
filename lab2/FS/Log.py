@@ -1,11 +1,10 @@
-import Node
-
-class Log(Node):
-    def __init__(self, name, contents):
-        pass
+class Log():
+    def __init__(self, name: str, contents: str = 'just_string'):
+        self.name = name
+        self.contents = contents
 
     def read(self):
-        pass
+        return self.contents
 
     def append(self, line):
-        pass
+        self.contents += line
