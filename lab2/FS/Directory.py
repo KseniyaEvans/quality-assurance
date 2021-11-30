@@ -33,6 +33,6 @@ class Directory():
 
     def list_subdirectories(self, level=0):
         for file in self.files:
-            print(level * '- ' + f'{file.name}{file.ext}')
+            print(level * '--' + f'{file.name}')
             if (type(file).__name__ == 'Directory'):
                 file.list_subdirectories(level + 1)

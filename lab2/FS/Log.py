@@ -1,5 +1,5 @@
 class Log():
-    def __init__(self, name: str, contents: str = 'just_string'):
+    def __init__(self, name, contents):
         self.name = name
         self.contents = contents
 
